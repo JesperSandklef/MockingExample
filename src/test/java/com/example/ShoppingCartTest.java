@@ -20,4 +20,12 @@ public class ShoppingCartTest {
         shoppingCart.addItem(item);
         assertThat(shoppingCart.getItems()).contains(item);
     }
+
+    @Test
+    public void testRemoveItem() {
+        Item item = new Item("banana", 10, 1);
+        shoppingCart.addItem(item);
+        shoppingCart.removeItem(item);
+        assertThat(shoppingCart.getItems()).doesNotContain(item);
+    }
 }
