@@ -22,6 +22,22 @@ public class ShoppingCartTest {
     }
 
     @Test
+    public void testChangeItemQuantity(){
+        Item item = new Item("banana", 10, 1);
+        shoppingCart.addItem(item);
+        shoppingCart.changeQuantity(item, 2);
+        assertThat(item.getQuantity()).isEqualTo(2);
+    }
+
+    @Test
+    public void testAddDiscountToItem(){
+        Item item = new Item("banana", 10, 1);
+        shoppingCart.addItem(item);
+        shoppingCart.addDiscount(10);
+        assertThat(shoppingCart.getTotalPrice()).isEqualTo(9);
+    }
+
+    @Test
     public void testRemoveItem() {
         Item item = new Item("banana", 10, 1);
         shoppingCart.addItem(item);
@@ -36,13 +52,5 @@ public class ShoppingCartTest {
         Item item1 = new Item("apple", 5, 1);
         shoppingCart.addItem(item1);
         assertThat(shoppingCart.getTotalPrice()).isEqualTo(15);
-    }
-
-    @Test
-    public void addDiscountToItem(){
-        Item item = new Item("banana", 10, 1);
-        shoppingCart.addItem(item);
-        shoppingCart.addDiscount(10);
-        assertThat(shoppingCart.getTotalPrice()).isEqualTo(9);
     }
 }
