@@ -26,4 +26,11 @@ public class ShoppingCart {
     public double getTotalPrice() {
         return items.stream().mapToDouble(item -> item.getPrice() * item.getQuantity()).sum();
     }
+
+    public void addDiscount(double percentage) {
+        for (Item item : items) {
+            double discount = item.getPrice() * (percentage / 100);
+            item.setPrice(item.getPrice() - discount);
+        }
+    }
 }

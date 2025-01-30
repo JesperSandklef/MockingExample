@@ -37,4 +37,12 @@ public class ShoppingCartTest {
         shoppingCart.addItem(item1);
         assertThat(shoppingCart.getTotalPrice()).isEqualTo(15);
     }
+
+    @Test
+    public void addDiscountToItem(){
+        Item item = new Item("banana", 10, 1);
+        shoppingCart.addItem(item);
+        shoppingCart.addDiscount(10);
+        assertThat(shoppingCart.getTotalPrice()).isEqualTo(9);
+    }
 }
