@@ -28,4 +28,13 @@ public class ShoppingCartTest {
         shoppingCart.removeItem(item);
         assertThat(shoppingCart.getItems()).doesNotContain(item);
     }
+
+    @Test
+    public void testCalculateTotalPrice(){
+        Item item = new Item("banana", 10, 1);
+        shoppingCart.addItem(item);
+        Item item1 = new Item("apple", 5, 1);
+        shoppingCart.addItem(item1);
+        assertThat(shoppingCart.getTotalPrice()).isEqualTo(15);
+    }
 }
